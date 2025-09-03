@@ -1,35 +1,65 @@
-import { useParams, Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useCocktailById } from '../hooks/useCocktails';
 
 export default function CocktailInfoPage() {
   const { id = '' } = useParams();
   const { data: c, loading, error } = useCocktailById(id);
 
-  if (loading) return <p>Laddar...</p>;
-  if (error) return <p>Fel: {error}</p>;
+  if (loading) return <p>Laddar…</p>;
+  if (error) return <p style={{ color: 'crimson' }}>Fel: {error}</p>;
   if (!c) return <p>Ingen data.</p>;
 
   return (
-    <div>
-      <Link to="/search">← Till sök</Link>
-      <h1>{c.name}</h1>
-      <img src={c.thumbnail} alt={c.name} width={300} />
-      <p><strong>Category:</strong> {c.category}</p>
-      <p><strong>Alcoholic:</strong> {c.alcoholic ? 'Yes' : 'No'}</p>
-      <p><strong>Glass:</strong> {c.glass}</p>
-      {c.tags.length > 0 && <p><strong>Tags:</strong> {c.tags.join(', ')}</p>}
+    <main style={{ maxWidth: 800, margin: '0 auto', padding: '1rem', display: 'grid', gap: 16 }}>
+      {/* 3) Navigation */}
+      <nav style={{ display: 'flex', gap: 8 }}>
+        <Link to="/">&larr; Hem</Link>
+        <span>•</span>
+        <Link to="/search">Sök</Link>
+      </nav>
 
-      <h3>Ingredients</h3>
-      <ul>
-        {c.ingredients.map((i, idx) => (
-          <li key={idx}>
-            {i.ingredient} {i.measure ? `– ${i.measure}` : ''}
-          </li>
-        ))}
-      </ul>
+      <header style={{ display: 'grid', gap: 8 }}>
+        <h1 style={{ margin: 0 }}>{c.name}</h1>
+        <div style={{ fontSize: 14, color: '#555' }}>
+          <strong>Category:</strong> {c.category} &nbsp;|&nbsp; 
+          <strong>Alcoholic:</strong> {c.alcoholic ? 'Yes' : 'No'} &nbsp;|&nbsp; 
+          <strong>Glass:</strong> {c.glass}
+        </div>
+        {c.tags.length > 0 && (
+          <div style={{ fontSize: 14 }}>
+            <strong>Tags:</strong> {c.tags.join(', ')}
+          </div>
+        )}
+      </header>
 
-      <h3>Instructions</h3>
-      <p>{c.instructions}</p>
-    </div>
+      <section style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 16 }}>
+        <img
+          src={c.thumbnail}
+          alt={c.name}
+          style={{ width: '100%', borderRadius: 12, boxShadow: '0 6px 18px rgba(0,0,0,0.12)' }}
+        />
+
+        <article style={{ display: 'grid', gap: 12 }}>
+          <div>
+            <h3 style={{ margin: '0 0 6px' }}>Ingredients</h3>
+            <ul style={{ margin: 0 }}>
+              {c.ingredients.map((i, idx) => (
+                <li key={idx}>
+                  {/* BONUS: gör ingrediensen klickbar till /ingredient/:name om du lägger till den sidan */}
+                  {/* <Link to={`/ingredient/${encodeURIComponent(i.ingredient)}`}>{i.ingredient}</Link> */}
+                  <span>{i.ingredient}</span>
+                  {i.measure ? ` — ${i.measure}` : ''}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 style={{ margin: '0 0 6px' }}>Instructions</h3>
+            <p style={{ margin: 0 }}>{c.instructions}</p>
+          </div>
+        </article>
+      </section>
+    </main>
   );
 }
