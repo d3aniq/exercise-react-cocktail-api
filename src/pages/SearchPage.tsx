@@ -52,16 +52,13 @@ export default function SearchPage() {
       {loading && <p>Loading…</p>}
       {error && <p style={{ color: 'crimson' }}>Error: {error}</p>}
 
-      {/* Results list: show only names; each links to /cocktail/:id */}
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 8 }}>
-        {paged.map((c) => (
-          <li key={c.id}>
-            <Link to={`/cocktail/${c.id}`} style={{ textDecoration: 'none' }}>
-              {c.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <ul className="grid grid-3" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+  {paged.map((c) => (
+    <li key={c.id} className="card" style={{ padding: 12 }}>
+      <Link to={`/cocktail/${c.id}`}>{c.name}</Link>
+    </li>
+  ))}
+</ul>
 
       {/* Pagination controls (only if needed) */}
       {results.length > pageSize && (

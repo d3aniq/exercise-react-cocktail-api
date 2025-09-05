@@ -12,11 +12,11 @@ export default function CocktailInfoPage() {
   return (
     <main style={{ maxWidth: 800, margin: '0 auto', padding: '1rem', display: 'grid', gap: 16 }}>
       {/* 3) Navigation */}
-      <nav style={{ display: 'flex', gap: 8 }}>
-        <Link to="/">&larr; Hem</Link>
+      {/* <nav style={{ display: 'flex', gap: 8 }}>
+        <Link to="/">&larr; Home</Link>
         <span>•</span>
-        <Link to="/search">Sök</Link>
-      </nav>
+        <Link to="/search">Search</Link>
+      </nav> */}
 
       <header style={{ display: 'grid', gap: 8 }}>
         <h1 style={{ margin: 0 }}>{c.name}</h1>
@@ -33,11 +33,14 @@ export default function CocktailInfoPage() {
       </header>
 
       <section style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 16 }}>
-        <img
+        {/* { <img
           src={c.thumbnail}
           alt={c.name}
           style={{ width: '100%', borderRadius: 12, boxShadow: '0 6px 18px rgba(0,0,0,0.12)' }}
-        />
+        /> } */}
+
+        <img src={c.thumbnail} alt={c.name} className="rounded" />
+
 
         <article style={{ display: 'grid', gap: 12 }}>
           <div>

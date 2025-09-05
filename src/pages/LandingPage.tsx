@@ -32,43 +32,21 @@ export default function LandingPage() {
   if (error) return <p>Fel: {error}</p>;
   if (!drink) return <p>Ingen cocktail hittades.</p>;
 
-  // 2) Visa cocktail-kort + 3) knapp för ny slumpad
   return (
-    <main style={{ display: 'grid', gap: '1rem' }}>
-      <h1>Random Cocktail</h1>
+  <div className="grid" style={{ gap: '1.25rem' }}>
+    <h1>Random Cocktail</h1>
 
-      <article
-        style={{
-          border: '1px solid #ddd',
-          borderRadius: 12,
-          padding: 16,
-          maxWidth: 420,
-          boxShadow: '0 6px 20px rgba(0,0,0,0.08)',
-        }}
-      >
-        <img
-          src={drink.thumbnail}
-          alt={drink.name}
-          style={{ width: '100%', borderRadius: 12, marginBottom: 12 }}
-        />
-        <h2 style={{ margin: '0 0 8px' }}>{drink.name}</h2>
-
-        <div style={{ display: 'flex', gap: 8 }}>
-          <Link
-            to={`/cocktail/${drink.id}`}
-            style={{ padding: '8px 12px', border: '1px solid #999', borderRadius: 8 }}
-          >
-            See more
-          </Link>
-          <button
-            onClick={handleNewRandom}
-            disabled={refreshing}
-            style={{ padding: '8px 12px', borderRadius: 8 }}
-          >
-            {refreshing ? 'Hämtar…' : 'Ny slumpad cocktail'}
-          </button>
-        </div>
-      </article>
-    </main>
+    <article className="card" style={{ padding: 16, maxWidth: 420 }}>
+      <img src={drink.thumbnail} alt={drink.name} className="rounded" />
+      <h2>{drink.name}</h2>
+      <div style={{ display: 'flex', gap: 8 }}>
+        <Link to={`/cocktail/${drink.id}`} className="btn">See more</Link>
+        <button onClick={handleNewRandom} className="btn primary" disabled={refreshing}>
+          {refreshing ? 'Loading…' : 'New random'}
+        </button>
+      </div>
+    </article>
+  </div>
   );
 }
+
