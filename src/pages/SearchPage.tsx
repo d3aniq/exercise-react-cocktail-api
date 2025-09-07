@@ -33,7 +33,7 @@ export default function SearchPage() {
   }
 
   return (
-    <main style={{ maxWidth: 640, margin: '0 auto', padding: '1rem' }}>
+    <main style={{maxWidth: 720, margin: '0 auto', padding: '1rem', display: 'grid', gap: 16}}>
       <h1>Search Cocktails</h1>
 
       <form onSubmit={onSubmit} style={{ display: 'flex', gap: 8, marginBottom: 16 }}>

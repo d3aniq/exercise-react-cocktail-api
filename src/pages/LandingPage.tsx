@@ -33,7 +33,7 @@ export default function LandingPage() {
   if (!drink) return <p>No cocktail was found.</p>;
 
   return (
-  <div className="grid" style={{ gap: '1.25rem' }}>
+  <div className="grid" style={{maxWidth: 720, margin: '0 auto', padding: '1rem', display: 'grid', gap: 16}}>
     <h1>Random Cocktail</h1>
 
     <article className="card" style={{ padding: 16, maxWidth: 420 }}>

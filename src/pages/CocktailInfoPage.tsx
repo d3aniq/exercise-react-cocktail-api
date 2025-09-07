@@ -10,7 +10,7 @@ export default function CocktailInfoPage() {
   if (!c) return <p>No data.</p>;
 
   return (
-    <main style={{ maxWidth: 800, margin: '0 auto', padding: '1rem', display: 'grid', gap: 16 }}>
+    <main style={{ maxWidth: 720, margin: '0 auto', padding: '1rem', display: 'grid', gap: 16 }}>
       {/* 3) Navigation */}
       {/* <nav style={{ display: 'flex', gap: 8 }}>
         <Link to="/">&larr; Home</Link>
