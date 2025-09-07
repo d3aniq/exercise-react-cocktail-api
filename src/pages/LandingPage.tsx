@@ -28,9 +28,9 @@ export default function LandingPage() {
   }
 
   // 4) Loading & error states
-  if (loading && !drink) return <p>Laddar slumpad cocktail…</p>;
-  if (error) return <p>Fel: {error}</p>;
-  if (!drink) return <p>Ingen cocktail hittades.</p>;
+  if (loading && !drink) return <p>Loading random cocktail…</p>;
+  if (error) return <p>Eror: {error}</p>;
+  if (!drink) return <p>No cocktail was found.</p>;
 
   return (
   <div className="grid" style={{ gap: '1.25rem' }}>

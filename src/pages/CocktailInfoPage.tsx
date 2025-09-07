@@ -1,13 +1,13 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useCocktailById } from '../hooks/useCocktails';
 
 export default function CocktailInfoPage() {
   const { id = '' } = useParams();
   const { data: c, loading, error } = useCocktailById(id);
 
-  if (loading) return <p>Laddar…</p>;
-  if (error) return <p style={{ color: 'crimson' }}>Fel: {error}</p>;
-  if (!c) return <p>Ingen data.</p>;
+  if (loading) return <p>Loading…</p>;
+  if (error) return <p style={{ color: 'crimson' }}>Error: {error}</p>;
+  if (!c) return <p>No data.</p>;
 
   return (
     <main style={{ maxWidth: 800, margin: '0 auto', padding: '1rem', display: 'grid', gap: 16 }}>

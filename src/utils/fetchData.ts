@@ -21,7 +21,7 @@ async function fetchJSON<T>(path: string, signal?: AbortSignal): Promise<T> {
 // Slumpad drink (Landing Page)
 export async function getRandomCocktail(signal?: AbortSignal): Promise<Cocktail> {
   const data = await fetchJSON<{ drinks: any[] | null }>('/random.php', signal);
-  if (!data.drinks || data.drinks.length === 0) throw new Error('Inga resultat');
+  if (!data.drinks || data.drinks.length === 0) throw new Error('No results');
   return mapRawCocktailData(data.drinks[0]);
 }
 
@@ -40,7 +40,7 @@ export async function searchCocktailsByName(
 // Hämta detaljer (Cocktail Info Page)
 export async function getCocktailById(id: string, signal?: AbortSignal): Promise<Cocktail> {
   const data = await fetchJSON<{ drinks: any[] | null }>(`/lookup.php?i=${encodeURIComponent(id)}`, signal);
-  if (!data.drinks || data.drinks.length === 0) throw new Error('Drink hittades inte');
+  if (!data.drinks || data.drinks.length === 0) throw new Error('No drink was found');
   return mapRawCocktailData(data.drinks[0]);
 }
 

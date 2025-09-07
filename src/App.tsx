@@ -1,4 +1,4 @@
-import { Routes, Route, Link, NavLink } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import SearchPage from './pages/SearchPage';
 import CocktailInfoPage from './pages/CocktailInfoPage';
