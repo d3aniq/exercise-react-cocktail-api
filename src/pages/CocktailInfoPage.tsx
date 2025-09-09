@@ -48,7 +48,6 @@ export default function CocktailInfoPage() {
             <ul style={{ margin: 0 }}>
               {c.ingredients.map((i, idx) => (
                 <li key={idx}>
-                  {/* BONUS: gör ingrediensen klickbar till /ingredient/:name om du lägger till den sidan */}
                   {/* <Link to={`/ingredient/${encodeURIComponent(i.ingredient)}`}>{i.ingredient}</Link> */}
                   <span>{i.ingredient}</span>
                   {i.measure ? ` — ${i.measure}` : ''}

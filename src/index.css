@@ -2,7 +2,7 @@
   --bg: #f7f7fb;
   --text: #111827;
   --muted: #6b7280;
-  --brand: #059669;           /* emerald-ish */
+  --brand: #059669;           
   --card: #fff;
   --border: #e5e7eb;
 }
@@ -29,7 +29,7 @@ body {
 .nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
 .nav a.active, .nav a:hover { color: var(--text); }
 
-/* UI-prylar */
+/* UI */
 .card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 14px; box-shadow: 0 6px 18px rgba(0,0,0,.06);

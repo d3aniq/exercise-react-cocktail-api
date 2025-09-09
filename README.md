@@ -1,16 +1,15 @@
-# Cocktail Wiki (React + Vite + TS)
+# Cocktail Wiki (React + Vite + TypeScript)
 
-## Kör lokalt
+A simple cocktail encyclopedia built with React. It shows a random cocktail on the landing page, allows users to search by name with pagination, and displays detailed cocktail information.
+
+## Features
+- Random cocktail on the landing page with “See more” and “New random” buttons.
+- Search by name with pagination (10 results per page).
+- Cocktail detail page with image, category, alcoholic status, glass, tags, ingredients (with measures) and instructions.
+- Graceful loading, error, and empty states.
+
+## Getting Started
+
+```bash
 npm install
 npm run dev
-
-## Bygg
-npm run build
-npm run preview
-
-## Funktioner
-- Random cocktail på landing
-- Sök med pagination (10 per sida)
-- Detaljsida med kategori, glas, ingredienser+mått, instruktioner
-
-API: TheCocktailDB

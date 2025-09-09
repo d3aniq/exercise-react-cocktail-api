@@ -7,7 +7,7 @@ import {
   type Cocktail,
 } from '../utils/fetchData';
 
-// Bas-mönster för async med AbortController
+// generic async hook
 function useAsync<T>(runner: (signal: AbortSignal) => Promise<T>, deps: any[] = []) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -32,7 +32,7 @@ function useAsync<T>(runner: (signal: AbortSignal) => Promise<T>, deps: any[] = 
   return { data, loading, error };
 }
 
-// ------- Specialiserade hooks -------
+// specialized hooks
 
 export function useRandomCocktail() {
   return useAsync<Cocktail>((signal) => getRandomCocktail(signal), []);

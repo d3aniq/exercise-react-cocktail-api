@@ -18,15 +18,15 @@ async function fetchJSON<T>(path: string, signal?: AbortSignal): Promise<T> {
 
 // ---------- Endpoints ----------
 
-// Slumpad drink (Landing Page)
+// Landing Page
 export async function getRandomCocktail(signal?: AbortSignal): Promise<Cocktail> {
   const data = await fetchJSON<{ drinks: any[] | null }>('/random.php', signal);
   if (!data.drinks || data.drinks.length === 0) throw new Error('No results');
   return mapRawCocktailData(data.drinks[0]);
 }
 
-// Sök på namn (Search Page)
-// Returnerar ALLA träffar (paginera i UI:t)
+// Search Page
+// Return all cocktails matching name (or empty array if none or empty query)
 export async function searchCocktailsByName(
   name: string,
   signal?: AbortSignal
@@ -37,15 +37,14 @@ export async function searchCocktailsByName(
   return (data.drinks ?? []).map(mapRawCocktailData);
 }
 
-// Hämta detaljer (Cocktail Info Page)
+// Cocktail Info Page
 export async function getCocktailById(id: string, signal?: AbortSignal): Promise<Cocktail> {
   const data = await fetchJSON<{ drinks: any[] | null }>(`/lookup.php?i=${encodeURIComponent(id)}`, signal);
   if (!data.drinks || data.drinks.length === 0) throw new Error('No drink was found');
   return mapRawCocktailData(data.drinks[0]);
 }
 
-// Filter (bonus – kategori, ingrediens, glas)
-// OBS! filter-endpoints returnerar inte alla fält, utan id+namn+thumb -> slå upp per id vid behov.
+// Filter
 type FilterDrink = { idDrink: string; strDrink: string; strDrinkThumb: string };
 export async function filterByCategory(category: string, signal?: AbortSignal): Promise<FilterDrink[]> {
   const data = await fetchJSON<{ drinks: FilterDrink[] | null }>(`/filter.php?c=${encodeURIComponent(category)}`, signal);

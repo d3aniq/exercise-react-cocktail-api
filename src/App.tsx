@@ -8,7 +8,6 @@ export default function App() {
     <>
       <header className="nav">
         <nav className="nav-inner">
-          {/* <Link to="/" className="logo" style={{ fontWeight: 700 }}>Cocktail Wiki</Link> */}
           <NavLink to="/" end className={({isActive}) => isActive ? 'active' : ''}>Home</NavLink>
           <NavLink to="/search" className={({isActive}) => isActive ? 'active' : ''}>Search</NavLink>
         </nav>
